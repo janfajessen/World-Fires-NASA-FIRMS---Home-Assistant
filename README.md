@@ -8,24 +8,27 @@
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-yellow.svg?style=for-the-badge)](https://www.buymeacoffee.com/janfajessen)  <!-- Reemplaza con tu link -->
 [![Patreon](https://img.shields.io/badge/Patreon-Support-red.svg?style=for-the-badge)](https://www.patreon.com/janfajessen)  <!-- Reemplaza con tu link -->
 
-This is an unofficial custom integration for Home Assistant that fetches active fire data from NASA's FIRMS (Fire Information for Resource Management System) API. It displays detected fires as geo_location entities on your HA map, with distance from home as state, and detailed attributes like confidence level, acquisition time, and more.
+This is an unofficial custom integration for Home Assistant that fetches active fire data from NASA's FIRMS API 
+(Fire Information for Resource Management System). 
+It displays detected fires as geo_location entities on your HA map, with distance from home as state, and detailed attributes like confidence level, acquisition time, and more.
 
 [<img src="https://raw.githubusercontent.com/janfajessen/Fires-NASA-FIRMS-Unofficial/refs/heads/main/Map_NASA_FIRMS.png" width="200"/>](https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@20.1,31.3,4.5z)
 
 ## Features
 - Fetches real-time fire data from NASA FIRMS within a configurable radius.
-- Supports multiple data sources (VIIRS SNPP, MODIS, VIIRS NOAA-20).
 - Filters by confidence level (low, nominal, high).
 - Displays each fire as a geo_location entity with distance (km/mi) as state.
 - Customizable scan interval, days back, and units.
-- Multi-language support (32 languages included).
+- Supports multiple data sources (VIIRS SNPP, MODIS, VIIRS NOAA-20).
+- Multi-language support.
 - Attributes include latitude, longitude, brightness, FRP, local acquisition time/date, and more.
 - Multiple instances supported for different locations/configs.
 
 ## Requirements
 - Home Assistant 2026.2 or later.
 - API key from [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/api/) (free, quick signup).
-- Dependencies: `aiohttp>=3.8.0`, `haversine>=2.8.0` (installed automatically via HA).
+- Dependencies:
+  `aiohttp>=3.8.0`, `haversine>=2.8.0` (installed automatically via HA).
 
 ## Installation
 
