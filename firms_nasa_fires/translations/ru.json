@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Пожары NASA FIRMS",
+        "description": "Настройте параметры для получения пожаров, обнаруженных NASA FIRMS.",
+        "data": {
+          "api_key": "Ключ API",
+          "latitude": "Широта",
+          "longitude": "Долгота",
+          "radius_km": "Радиус поиска (км)",
+          "units": "Единица расстояния",
+          "min_confidence": "Минимальный уровень доверия",
+          "source": "Источник данных",
+          "days": "Дней назад",
+          "scan_interval": "Интервал обновления (минуты)"
+        },
+        "data_description": {
+          "api_key": "Получите свой ключ на https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "Ключ API недействителен. Он должен быть не менее 10 символов длиной."
+    },
+    "abort": {
+      "already_configured": "Эта интеграция уже настроена."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Параметры для пожаров NASA FIRMS",
+        "data": {
+          "radius_km": "Радиус поиска (км)",
+          "units": "Единица расстояния",
+          "min_confidence": "Минимальный уровень доверия",
+          "source": "Источник данных",
+          "days": "Дней назад",
+          "scan_interval": "Интервал обновления (минуты)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Километры",
+        "mi": "Мили"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Все (низкий, номинальный, высокий)",
+        "n": "Номинальный и высокий (рекомендуется)",
+        "h": "Только высокий"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Реальное время)",
+        "modis": "MODIS (Реальное время)",
+        "viirs_noaa": "VIIRS NOAA-20 (Реальное время)"
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NASA FIRMS Fires",
+        "description": "NASA FIRMS에 의해 감지된 화재를 얻기 위해 매개변수를 구성하십시오.",
+        "data": {
+          "api_key": "API 키",
+          "latitude": "위도",
+          "longitude": "경도",
+          "radius_km": "검색 반경 (km)",
+          "units": "거리 단위",
+          "min_confidence": "최소 신뢰 수준",
+          "source": "데이터 소스",
+          "days": "뒤로 보는 일",
+          "scan_interval": "업데이트 간격 (분)"
+        },
+        "data_description": {
+          "api_key": "https://firms.modaps.eosdis.nasa.gov/api/에서 키를 얻으십시오"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "API 키가 유효하지 않습니다. 최소 10자 길이여야 합니다."
+    },
+    "abort": {
+      "already_configured": "이 통합은 이미 구성되었습니다."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "NASA FIRMS Fires 옵션",
+        "data": {
+          "radius_km": "검색 반경 (km)",
+          "units": "거리 단위",
+          "min_confidence": "최소 신뢰 수준",
+          "source": "데이터 소스",
+          "days": "뒤로 보는 일",
+          "scan_interval": "업데이트 간격 (분)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "킬로미터",
+        "mi": "마일"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "모두 (낮음, 명목, 높음)",
+        "n": "명목 및 높음 (권장)",
+        "h": "높음만"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (실시간)",
+        "modis": "MODIS (실시간)",
+        "viirs_noaa": "VIIRS NOAA-20 (실시간)"
+      }
+    }
+  }
+}

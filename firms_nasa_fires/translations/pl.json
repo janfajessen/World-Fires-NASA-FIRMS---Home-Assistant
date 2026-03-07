@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Pożary NASA FIRMS",
+        "description": "Skonfiguruj parametry, aby uzyskać pożary wykryte przez NASA FIRMS.",
+        "data": {
+          "api_key": "Klucz API",
+          "latitude": "Szerokość geograficzna",
+          "longitude": "Długość geograficzna",
+          "radius_km": "Promień wyszukiwania (km)",
+          "units": "Jednostka odległości",
+          "min_confidence": "Minimalny poziom zaufania",
+          "source": "Źródło danych",
+          "days": "Dni wstecz",
+          "scan_interval": "Interwał aktualizacji (minuty)"
+        },
+        "data_description": {
+          "api_key": "Pobierz swój klucz na https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "Klucz API jest nieprawidłowy. Musi mieć co najmniej 10 znaków."
+    },
+    "abort": {
+      "already_configured": "Ta integracja jest już skonfigurowana."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opcje dla pożarów NASA FIRMS",
+        "data": {
+          "radius_km": "Promień wyszukiwania (km)",
+          "units": "Jednostka odległości",
+          "min_confidence": "Minimalny poziom zaufania",
+          "source": "Źródło danych",
+          "days": "Dni wstecz",
+          "scan_interval": "Interwał aktualizacji (minuty)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Kilometry",
+        "mi": "Mile"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Wszystkie (niski, nominalny, wysoki)",
+        "n": "Nominalny i wysoki (zalecane)",
+        "h": "Tylko wysoki"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Czas rzeczywisty)",
+        "modis": "MODIS (Czas rzeczywisty)",
+        "viirs_noaa": "VIIRS NOAA-20 (Czas rzeczywisty)"
+      }
+    }
+  }
+}

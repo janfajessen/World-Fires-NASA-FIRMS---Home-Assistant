@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NASA FIRMS Fires",
+        "description": "Konfigurieren Sie Parameter, um Feuer zu erhalten, die von NASA FIRMS erkannt wurden.",
+        "data": {
+          "api_key": "API-Schlüssel",
+          "latitude": "Breitengrad",
+          "longitude": "Längengrad",
+          "radius_km": "Suchradius (km)",
+          "units": "Entfernungsseinheit",
+          "min_confidence": "Minimales Vertrauensniveau",
+          "source": "Datenquelle",
+          "days": "Tage zurück",
+          "scan_interval": "Aktualisierungsintervall (Minuten)"
+        },
+        "data_description": {
+          "api_key": "Holen Sie sich Ihren Schlüssel unter https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "Der API-Schlüssel ist ungültig. Er muss mindestens 10 Zeichen lang sein."
+    },
+    "abort": {
+      "already_configured": "Diese Integration ist bereits konfiguriert."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Optionen für NASA FIRMS Fires",
+        "data": {
+          "radius_km": "Suchradius (km)",
+          "units": "Entfernungsseinheit",
+          "min_confidence": "Minimales Vertrauensniveau",
+          "source": "Datenquelle",
+          "days": "Tage zurück",
+          "scan_interval": "Aktualisierungsintervall (Minuten)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Kilometer",
+        "mi": "Meilen"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Alle (niedrig, nominell, hoch)",
+        "n": "Nominell und hoch (empfohlen)",
+        "h": "Nur hoch"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Echtzeit)",
+        "modis": "MODIS (Echtzeit)",
+        "viirs_noaa": "VIIRS NOAA-20 (Echtzeit)"
+      }
+    }
+  }
+}

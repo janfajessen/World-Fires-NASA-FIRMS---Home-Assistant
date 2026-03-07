@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NASA FIRMS Fires",
+        "description": "NASA FIRMS द्वारा पता चले आग प्राप्त करने के लिए पैरामीटर कॉन्फ़िगर करें.",
+        "data": {
+          "api_key": "API कुंजी",
+          "latitude": "अक्षांश",
+          "longitude": "देशांतर",
+          "radius_km": "खोज त्रिज्या (किमी)",
+          "units": "दूरी इकाई",
+          "min_confidence": "न्यूनतम विश्वास स्तर",
+          "source": "डेटा स्रोत",
+          "days": "दिन पीछे",
+          "scan_interval": "अपडेट अंतराल (मिनट)"
+        },
+        "data_description": {
+          "api_key": "अपनी कुंजी https://firms.modaps.eosdis.nasa.gov/api/ पर प्राप्त करें"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "API कुंजी अमान्य है. यह कम से कम 10 वर्ण लंबा होना चाहिए."
+    },
+    "abort": {
+      "already_configured": "यह एकीकरण पहले से कॉन्फ़िगर किया गया है."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "NASA FIRMS Fires के लिए विकल्प",
+        "data": {
+          "radius_km": "खोज त्रिज्या (किमी)",
+          "units": "दूरी इकाई",
+          "min_confidence": "न्यूनतम विश्वास स्तर",
+          "source": "डेटा स्रोत",
+          "days": "दिन पीछे",
+          "scan_interval": "अपडेट अंतराल (मिनट)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "किलोमीटर",
+        "mi": "मील"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "सभी (कम, नाममात्र, उच्च)",
+        "n": "नाममात्र और उच्च (अनुशंसित)",
+        "h": "केवल उच्च"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (वास्तविक समय)",
+        "modis": "MODIS (वास्तविक समय)",
+        "viirs_noaa": "VIIRS NOAA-20 (वास्तविक समय)"
+      }
+    }
+  }
+}

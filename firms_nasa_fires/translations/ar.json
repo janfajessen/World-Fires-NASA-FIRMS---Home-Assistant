@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "حرائق ناسا FIRMS",
+        "description": "قم بتكوين المعلمات للحصول على الحرائق المكتشفة بواسطة ناسا FIRMS.",
+        "data": {
+          "api_key": "مفتاح API",
+          "latitude": "خط العرض",
+          "longitude": "خط الطول",
+          "radius_km": "نصف قطر البحث (كم)",
+          "units": "وحدة المسافة",
+          "min_confidence": "أدنى مستوى ثقة",
+          "source": "مصدر البيانات",
+          "days": "الأيام للنظر إلى الوراء",
+          "scan_interval": "فاصل التحديث (دقائق)"
+        },
+        "data_description": {
+          "api_key": "احصل على مفتاحك at https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "مفتاح API غير صالح. يجب أن يكون طوله على الأقل 10 أحرف."
+    },
+    "abort": {
+      "already_configured": "هذه التكامل مكون بالفعل."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "خيارات لحرائق ناسا FIRMS",
+        "data": {
+          "radius_km": "نصف قطر البحث (كم)",
+          "units": "وحدة المسافة",
+          "min_confidence": "أدنى مستوى ثقة",
+          "source": "مصدر البيانات",
+          "days": "الأيام للنظر إلى الوراء",
+          "scan_interval": "فاصل التحديث (دقائق)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "كيلومترات",
+        "mi": "أميال"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "الكل (منخفض, اسمي, عالي)",
+        "n": "اسمي وعالي (موصى به)",
+        "h": "عالي فقط"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (وقت حقيقي)",
+        "modis": "MODIS (وقت حقيقي)",
+        "viirs_noaa": "VIIRS NOAA-20 (وقت حقيقي)"
+      }
+    }
+  }
+}

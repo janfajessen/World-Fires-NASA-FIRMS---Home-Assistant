@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Požari NASA FIRMS",
+        "description": "Nastavite parametre za pridobivanje požarov, zaznanih s strani NASA FIRMS.",
+        "data": {
+          "api_key": "API ključ",
+          "latitude": "Zemljepisna širina",
+          "longitude": "Zemljepisna dolžina",
+          "radius_km": "Radij iskanja (km)",
+          "units": "Enota razdalje",
+          "min_confidence": "Minimalna raven zaupanja",
+          "source": "Vir podatkov",
+          "days": "Dnevi nazaj",
+          "scan_interval": "Interval posodobitve (minute)"
+        },
+        "data_description": {
+          "api_key": "Pridobite svoj ključ na https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "API ključ je neveljaven. Moral bi biti vsaj 10 znakov dolg."
+    },
+    "abort": {
+      "already_configured": "Ta integracija je že konfigurirana."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Možnosti za požare NASA FIRMS",
+        "data": {
+          "radius_km": "Radij iskanja (km)",
+          "units": "Enota razdalje",
+          "min_confidence": "Minimalna raven zaupanja",
+          "source": "Vir podatkov",
+          "days": "Dnevi nazaj",
+          "scan_interval": "Interval posodobitve (minute)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Kilometri",
+        "mi": "Milje"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Vsi (nizka, nominalna, visoka)",
+        "n": "Nominalna in visoka (priporočeno)",
+        "h": "Samo visoka"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Real-time)",
+        "modis": "MODIS (Real-time)",
+        "viirs_noaa": "VIIRS NOAA-20 (Real-time)"
+      }
+    }
+  }
+}

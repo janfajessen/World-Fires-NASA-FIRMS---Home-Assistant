@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NASA FIRMS Fires",
+        "description": "Konfigurējiet parametrus, lai iegūtu NASA FIRMS atklātos ugunsgrēkus.",
+        "data": {
+          "api_key": "API atslēga",
+          "latitude": "Platums",
+          "longitude": "Garums",
+          "radius_km": "Meklēšanas rādiuss (km)",
+          "units": "Attāluma vienība",
+          "min_confidence": "Minimālais uzticamības līmenis",
+          "source": "Datu avots",
+          "days": "Dienas atpakaļ",
+          "scan_interval": "Atjaunināšanas intervāls (minūtes)"
+        },
+        "data_description": {
+          "api_key": "Iegūstiet savu atslēgu https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "API atslēga ir nederīga. Tam jābūt vismaz 10 rakstzīmju garam."
+    },
+    "abort": {
+      "already_configured": "Šī integrācija jau ir konfigurēta."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "NASA FIRMS Fires opcijas",
+        "data": {
+          "radius_km": "Meklēšanas rādiuss (km)",
+          "units": "Attāluma vienība",
+          "min_confidence": "Minimālais uzticamības līmenis",
+          "source": "Datu avots",
+          "days": "Dienas atpakaļ",
+          "scan_interval": "Atjaunināšanas intervāls (minūtes)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Kilometri",
+        "mi": "Jūdzes"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Visi (zems, nomināls, augsts)",
+        "n": "Nomināls un augsts (ieteicams)",
+        "h": "Tikai augsts"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Reāllaikā)",
+        "modis": "MODIS (Reāllaikā)",
+        "viirs_noaa": "VIIRS NOAA-20 (Reāllaikā)"
+      }
+    }
+  }
+}

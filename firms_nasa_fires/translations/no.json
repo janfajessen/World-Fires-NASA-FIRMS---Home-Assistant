@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NASA FIRMS Fires",
+        "description": "Konfigurer parametere for å få branner oppdaget av NASA FIRMS.",
+        "data": {
+          "api_key": "API-nøkkel",
+          "latitude": "Breddegrad",
+          "longitude": "Lengdegrad",
+          "radius_km": "Søkeradius (km)",
+          "units": "Avstandsenhet",
+          "min_confidence": "Minimum tillitsnivå",
+          "source": "Datakilde",
+          "days": "Dager tilbake",
+          "scan_interval": "Oppdateringsintervall (minutter)"
+        },
+        "data_description": {
+          "api_key": "Få nøkkelen din på https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "API-nøkkelen er ugyldig. Den må være minst 10 tegn lang."
+    },
+    "abort": {
+      "already_configured": "Denne integrasjonen er allerede konfigurert."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Alternativer for NASA FIRMS Fires",
+        "data": {
+          "radius_km": "Søkeradius (km)",
+          "units": "Avstandsenhet",
+          "min_confidence": "Minimum tillitsnivå",
+          "source": "Datakilde",
+          "days": "Dager tilbake",
+          "scan_interval": "Oppdateringsintervall (minutter)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Kilometer",
+        "mi": "Miles"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Alle (lav, nominell, høy)",
+        "n": "Nominell og høy (anbefalt)",
+        "h": "Bare høy"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Sanntid)",
+        "modis": "MODIS (Sanntid)",
+        "viirs_noaa": "VIIRS NOAA-20 (Sanntid)"
+      }
+    }
+  }
+}

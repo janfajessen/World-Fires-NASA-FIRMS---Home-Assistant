@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "שריפות NASA FIRMS",
+        "description": "הגדר פרמטרים כדי לקבל שריפות שזוהו על ידי NASA FIRMS.",
+        "data": {
+          "api_key": "מפתח API",
+          "latitude": "קו רוחב",
+          "longitude": "קו אורך",
+          "radius_km": "רדיוס חיפוש (קמ)",
+          "units": "יחידת מרחק",
+          "min_confidence": "רמת ביטחון מינימלית",
+          "source": "מקור נתונים",
+          "days": "ימים אחורה",
+          "scan_interval": "מרווח עדכון (דקות)"
+        },
+        "data_description": {
+          "api_key": "קבל את המפתח שלך ב https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "מפתח API אינו תקף. הוא חייב להיות לפחות 10 תווים ארוך."
+    },
+    "abort": {
+      "already_configured": "אינטגרציה זו כבר מוגדרת."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "אפשרויות לשריפות NASA FIRMS",
+        "data": {
+          "radius_km": "רדיוס חיפוש (קמ)",
+          "units": "יחידת מרחק",
+          "min_confidence": "רמת ביטחון מינימלית",
+          "source": "מקור נתונים",
+          "days": "ימים אחורה",
+          "scan_interval": "מרווח עדכון (דקות)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "קילומטרים",
+        "mi": "מיילים"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "כל (נמוך, נומינלי, גבוה)",
+        "n": "נומינלי וגבוה (מומלץ)",
+        "h": "גבוה בלבד"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (זמן אמת)",
+        "modis": "MODIS (זמן אמת)",
+        "viirs_noaa": "VIIRS NOAA-20 (זמן אמת)"
+      }
+    }
+  }
+}

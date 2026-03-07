@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NASA FIRMS Fires",
+        "description": "配置参数以获取 NASA FIRMS 检测到的火灾.",
+        "data": {
+          "api_key": "API 密钥",
+          "latitude": "纬度",
+          "longitude": "经度",
+          "radius_km": "搜索半径 (km)",
+          "units": "距离单位",
+          "min_confidence": "最低置信水平",
+          "source": "数据源",
+          "days": "回溯天数",
+          "scan_interval": "更新间隔 (分钟)"
+        },
+        "data_description": {
+          "api_key": "在 https://firms.modaps.eosdis.nasa.gov/api/ 获取您的密钥"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "API 密钥无效. 它必须至少 10 个字符长."
+    },
+    "abort": {
+      "already_configured": "此集成已配置."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "NASA FIRMS Fires 选项",
+        "data": {
+          "radius_km": "搜索半径 (km)",
+          "units": "距离单位",
+          "min_confidence": "最低置信水平",
+          "source": "数据源",
+          "days": "回溯天数",
+          "scan_interval": "更新间隔 (分钟)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "公里",
+        "mi": "英里"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "所有 (低, 标称, 高)",
+        "n": "标称和高 (推荐)",
+        "h": "仅高"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (实时)",
+        "modis": "MODIS (实时)",
+        "viirs_noaa": "VIIRS NOAA-20 (实时)"
+      }
+    }
+  }
+}

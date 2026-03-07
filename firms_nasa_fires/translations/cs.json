@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Požáry NASA FIRMS",
+        "description": "Nakonfigurujte parametry pro získání požárů detekovaných NASA FIRMS.",
+        "data": {
+          "api_key": "API klíč",
+          "latitude": "Zeměpisná šířka",
+          "longitude": "Zeměpisná délka",
+          "radius_km": "Poloměr hledání (km)",
+          "units": "Jednotka vzdálenosti",
+          "min_confidence": "Minimální úroveň důvěry",
+          "source": "Zdroj dat",
+          "days": "Dny zpět",
+          "scan_interval": "Interval aktualizace (minuty)"
+        },
+        "data_description": {
+          "api_key": "Získejte svůj klíč na https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "API klíč je neplatný. Musí mít alespoň 10 znaků."
+    },
+    "abort": {
+      "already_configured": "Tato integrace je již nakonfigurována."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Možnosti pro požáry NASA FIRMS",
+        "data": {
+          "radius_km": "Poloměr hledání (km)",
+          "units": "Jednotka vzdálenosti",
+          "min_confidence": "Minimální úroveň důvěry",
+          "source": "Zdroj dat",
+          "days": "Dny zpět",
+          "scan_interval": "Interval aktualizace (minuty)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Kilometry",
+        "mi": "Míle"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Všechny (nízká, nominální, vysoká)",
+        "n": "Nominální a vysoká (doporučeno)",
+        "h": "Pouze vysoká"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Real-time)",
+        "modis": "MODIS (Real-time)",
+        "viirs_noaa": "VIIRS NOAA-20 (Real-time)"
+      }
+    }
+  }
+}

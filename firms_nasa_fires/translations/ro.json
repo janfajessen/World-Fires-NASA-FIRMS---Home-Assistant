@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Incendii NASA FIRMS",
+        "description": "Configurează parametrii pentru a obține incendii detectate de NASA FIRMS.",
+        "data": {
+          "api_key": "Cheie API",
+          "latitude": "Latitudine",
+          "longitude": "Longitudine",
+          "radius_km": "Rază de căutare (km)",
+          "units": "Unitate de distanță",
+          "min_confidence": "Nivel minim de încredere",
+          "source": "Sursă de date",
+          "days": "Zile în urmă",
+          "scan_interval": "Interval de actualizare (minute)"
+        },
+        "data_description": {
+          "api_key": "Obține cheia ta la https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "Cheia API este invalidă. Trebuie să aibă cel puțin 10 caractere."
+    },
+    "abort": {
+      "already_configured": "Această integrare este deja configurată."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opțiuni pentru incendii NASA FIRMS",
+        "data": {
+          "radius_km": "Rază de căutare (km)",
+          "units": "Unitate de distanță",
+          "min_confidence": "Nivel minim de încredere",
+          "source": "Sursă de date",
+          "days": "Zile în urmă",
+          "scan_interval": "Interval de actualizare (minute)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Kilometri",
+        "mi": "Mile"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Toate (scăzut, nominal, înalt)",
+        "n": "Nominal și înalt (recomandat)",
+        "h": "Doar înalt"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Timp real)",
+        "modis": "MODIS (Timp real)",
+        "viirs_noaa": "VIIRS NOAA-20 (Timp real)"
+      }
+    }
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NASA FIRMS Fires",
+        "description": "Konfigūruokite parametrus, kad gautumėte NASA FIRMS aptiktus gaisrus.",
+        "data": {
+          "api_key": "API raktas",
+          "latitude": "Platuma",
+          "longitude": "Ilguma",
+          "radius_km": "Paieškos spindulys (km)",
+          "units": "Atstumo vienetas",
+          "min_confidence": "Mažiausias pasitikėjimo lygis",
+          "source": "Duomenų šaltinis",
+          "days": "Dienos atgal",
+          "scan_interval": "Atnaujinimo intervalas (minutės)"
+        },
+        "data_description": {
+          "api_key": "Gauti savo raktą https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "API raktas yra negaliojantis. Jis turi būti bent 10 simbolių ilgio."
+    },
+    "abort": {
+      "already_configured": "Ši integracija jau sukonfigūruota."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "NASA FIRMS Fires parinktys",
+        "data": {
+          "radius_km": "Paieškos spindulys (km)",
+          "units": "Atstumo vienetas",
+          "min_confidence": "Mažiausias pasitikėjimo lygis",
+          "source": "Duomenų šaltinis",
+          "days": "Dienos atgal",
+          "scan_interval": "Atnaujinimo intervalas (minutės)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Kilometrai",
+        "mi": "Mylios"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Visi (žemas, nominalus, aukštas)",
+        "n": "Nominalus ir aukštas (rekomenduojama)",
+        "h": "Tik aukštas"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Realus laikas)",
+        "modis": "MODIS (Realus laikas)",
+        "viirs_noaa": "VIIRS NOAA-20 (Realus laikas)"
+      }
+    }
+  }
+}

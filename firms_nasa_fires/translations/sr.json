@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Пожари NASA FIRMS",
+        "description": "Конфигуришите параметре да бисте добили пожаре детектоване од стране NASA FIRMS.",
+        "data": {
+          "api_key": "API кључ",
+          "latitude": "Географска ширина",
+          "longitude": "Географска дужина",
+          "radius_km": "Радијус претраге (км)",
+          "units": "Јединица растојања",
+          "min_confidence": "Минимални ниво поверења",
+          "source": "Извор података",
+          "days": "Дани уназад",
+          "scan_interval": "Интервал ажурирања (минута)"
+        },
+        "data_description": {
+          "api_key": "Добијте свој кључ на https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "API кључ је неважећи. Мора бити најмање 10 знакова дуг."
+    },
+    "abort": {
+      "already_configured": "Ова интеграција је већ конфигурисана."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Опције за пожаре NASA FIRMS",
+        "data": {
+          "radius_km": "Радијус претраге (км)",
+          "units": "Јединица растојања",
+          "min_confidence": "Минимални ниво поверења",
+          "source": "Извор података",
+          "days": "Дани уназад",
+          "scan_interval": "Интервал ажурирања (минута)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Километри",
+        "mi": "Миле"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Сви (низак, номинални, висок)",
+        "n": "Номинални и висок (препоручено)",
+        "h": "Само висок"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (У реалном времену)",
+        "modis": "MODIS (У реалном времену)",
+        "viirs_noaa": "VIIRS NOAA-20 (У реалном времену)"
+      }
+    }
+  }
+}

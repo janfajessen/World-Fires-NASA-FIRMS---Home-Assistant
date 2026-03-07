@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NASA FIRMS Fires",
+        "description": "Configura los parámetros para obtener incendios detectados por NASA FIRMS.",
+        "data": {
+          "api_key": "Clave API",
+          "latitude": "Latitud",
+          "longitude": "Longitud",
+          "radius_km": "Radio de búsqueda (km)",
+          "units": "Unidad de distancia",
+          "min_confidence": "Nivel de confianza mínimo",
+          "source": "Fuente de datos",
+          "days": "Días hacia atrás",
+          "scan_interval": "Intervalo de actualización (minutos)"
+        },
+        "data_description": {
+          "api_key": "Obtén tu clave en https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "La clave API es inválida. Debe tener al menos 10 caracteres."
+    },
+    "abort": {
+      "already_configured": "La integración ya está configurada."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opciones para NASA FIRMS Fires",
+        "data": {
+          "radius_km": "Radio de búsqueda (km)",
+          "units": "Unidad de distancia",
+          "min_confidence": "Nivel de confianza mínimo",
+          "source": "Fuente de datos",
+          "days": "Días hacia atrás",
+          "scan_interval": "Intervalo de actualización (minutos)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Kilómetros",
+        "mi": "Millas"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Todas (baja, nominal, alta)",
+        "n": "Nominal y alta (recomendado)",
+        "h": "Solo alta"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Tiempo Real)",
+        "modis": "MODIS (Tiempo Real)",
+        "viirs_noaa": "VIIRS NOAA-20 (Tiempo Real)"
+      }
+    }
+  }
+}

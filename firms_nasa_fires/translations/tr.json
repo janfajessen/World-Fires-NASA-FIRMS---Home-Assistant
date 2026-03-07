@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NASA FIRMS Fires",
+        "description": "NASA FIRMS tarafından tespit edilen yangınları almak için parametreleri yapılandırın.",
+        "data": {
+          "api_key": "API Anahtarı",
+          "latitude": "Enlem",
+          "longitude": "Boylam",
+          "radius_km": "Arama yarıçapı (km)",
+          "units": "Mesafe birimi",
+          "min_confidence": "Minimum güven seviyesi",
+          "source": "Veri kaynağı",
+          "days": "Geri günler",
+          "scan_interval": "Güncelleme aralığı (dakika)"
+        },
+        "data_description": {
+          "api_key": "Anahtarınızı https://firms.modaps.eosdis.nasa.gov/api/ adresinden alın"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "API anahtarı geçersiz. En az 10 karakter uzunluğunda olmalıdır."
+    },
+    "abort": {
+      "already_configured": "Bu entegrasyon zaten yapılandırılmış."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "NASA FIRMS Fires seçenekleri",
+        "data": {
+          "radius_km": "Arama yarıçapı (km)",
+          "units": "Mesafe birimi",
+          "min_confidence": "Minimum güven seviyesi",
+          "source": "Veri kaynağı",
+          "days": "Geri günler",
+          "scan_interval": "Güncelleme aralığı (dakika)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Kilometre",
+        "mi": "Mil"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Tümü (düşük, nominal, yüksek)",
+        "n": "Nominal ve yüksek (önerilen)",
+        "h": "Yalnızca yüksek"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Gerçek zamanlı)",
+        "modis": "MODIS (Gerçek zamanlı)",
+        "viirs_noaa": "VIIRS NOAA-20 (Gerçek zamanlı)"
+      }
+    }
+  }
+}

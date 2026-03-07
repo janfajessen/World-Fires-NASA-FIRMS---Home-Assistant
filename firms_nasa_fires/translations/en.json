@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NASA FIRMS Fires",
+        "description": "Configure parameters to get fires detected by NASA FIRMS.",
+        "data": {
+          "api_key": "API Key",
+          "latitude": "Latitude",
+          "longitude": "Longitude",
+          "radius_km": "Search radius (km)",
+          "units": "Distance unit",
+          "min_confidence": "Minimum confidence level",
+          "source": "Data source",
+          "days": "Days to look back",
+          "scan_interval": "Update interval (minutes)"
+        },
+        "data_description": {
+          "api_key": "Get your key at https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "The API key is invalid. It must be at least 10 characters long."
+    },
+    "abort": {
+      "already_configured": "This integration is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Options for NASA FIRMS Fires",
+        "data": {
+          "radius_km": "Search radius (km)",
+          "units": "Distance unit",
+          "min_confidence": "Minimum confidence level",
+          "source": "Data source",
+          "days": "Days to look back",
+          "scan_interval": "Update interval (minutes)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Kilometers",
+        "mi": "Miles"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "All (low, nominal, high)",
+        "n": "Nominal and high (recommended)",
+        "h": "High only"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Real-time)",
+        "modis": "MODIS (Real-time)",
+        "viirs_noaa": "VIIRS NOAA-20 (Real-time)"
+      }
+    }
+  }
+}

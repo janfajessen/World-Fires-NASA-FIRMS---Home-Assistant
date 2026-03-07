@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NASA FIRMS Fires",
+        "description": "Määritä parametrit saadaaksesi NASA FIRMSin havaitsemat palot.",
+        "data": {
+          "api_key": "API-avain",
+          "latitude": "Leveysaste",
+          "longitude": "Pituusaste",
+          "radius_km": "Hakusäde (km)",
+          "units": "Etäisyyden yksikkö",
+          "min_confidence": "Vähimmäisluottamusaste",
+          "source": "Tietolähde",
+          "days": "Päiviä taaksepäin",
+          "scan_interval": "Päivitysväli (minuuttia)"
+        },
+        "data_description": {
+          "api_key": "Hanki avain https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "API-avain on virheellinen. Sen on oltava vähintään 10 merkkiä pitkä."
+    },
+    "abort": {
+      "already_configured": "Tämä integrointi on jo määritetty."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Vaihtoehdot NASA FIRMS Firesille",
+        "data": {
+          "radius_km": "Hakusäde (km)",
+          "units": "Etäisyyden yksikkö",
+          "min_confidence": "Vähimmäisluottamusaste",
+          "source": "Tietolähde",
+          "days": "Päiviä taaksepäin",
+          "scan_interval": "Päivitysväli (minuuttia)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Kilometriä",
+        "mi": "Mailia"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Kaikki (matala, nimellinen, korkea)",
+        "n": "Nimellinen ja korkea (suositeltu)",
+        "h": "Vain korkea"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Reaaliaikainen)",
+        "modis": "MODIS (Reaaliaikainen)",
+        "viirs_noaa": "VIIRS NOAA-20 (Reaaliaikainen)"
+      }
+    }
+  }
+}

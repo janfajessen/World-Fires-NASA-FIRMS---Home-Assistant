@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NASA FIRMS Fires",
+        "description": "Állítsa be a paramétereket a NASA FIRMS által észlelt tüzek beszerzéséhez.",
+        "data": {
+          "api_key": "API kulcs",
+          "latitude": "Szélesség",
+          "longitude": "Hosszúság",
+          "radius_km": "Keresési sugár (km)",
+          "units": "Távolság egység",
+          "min_confidence": "Minimális bizalmi szint",
+          "source": "Adatforrás",
+          "days": "Napok vissza",
+          "scan_interval": "Frissítési intervallum (percek)"
+        },
+        "data_description": {
+          "api_key": "Szerezze be a kulcsát a https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "Az API kulcs érvénytelen. Legalább 10 karakter hosszúnak kell lennie."
+    },
+    "abort": {
+      "already_configured": "Ez az integráció már be van állítva."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opciók a NASA FIRMS Fires-hez",
+        "data": {
+          "radius_km": "Keresési sugár (km)",
+          "units": "Távolság egység",
+          "min_confidence": "Minimális bizalmi szint",
+          "source": "Adatforrás",
+          "days": "Napok vissza",
+          "scan_interval": "Frissítési intervallum (percek)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Kilométer",
+        "mi": "Mérföld"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Minden (alacsony, nominális, magas)",
+        "n": "Nominális és magas (ajánlott)",
+        "h": "Csak magas"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Valós idejű)",
+        "modis": "MODIS (Valós idejű)",
+        "viirs_noaa": "VIIRS NOAA-20 (Valós idejű)"
+      }
+    }
+  }
+}

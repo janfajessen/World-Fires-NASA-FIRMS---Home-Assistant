@@ -1,0 +1,67 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "NASA FIRMS Fires",
+        "description": "Konfiguratu parametroak NASA FIRMSk detektatutako suak lortzeko.",
+        "data": {
+          "api_key": "API gakoa",
+          "latitude": "Latitudea",
+          "longitude": "Longitudea",
+          "radius_km": "Bilaketa erradioa (km)",
+          "units": "Distantzia unitatea",
+          "min_confidence": "Gutxieneko konfiantza maila",
+          "source": "Datu iturria",
+          "days": "Egunak atzera",
+          "scan_interval": "Eguneratze tartea (minutuak)"
+        },
+        "data_description": {
+          "api_key": "Lortu zure gakoa https://firms.modaps.eosdis.nasa.gov/api/"
+        }
+      }
+    },
+    "error": {
+      "api_key_invalid": "API gakoa baliogabea da. Gutxienez 10 karaktere luzea izan behar du."
+    },
+    "abort": {
+      "already_configured": "Integratze hau jada konfiguratu da."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "NASA FIRMS Fires-erako aukerak",
+        "data": {
+          "radius_km": "Bilaketa erradioa (km)",
+          "units": "Distantzia unitatea",
+          "min_confidence": "Gutxieneko konfiantza maila",
+          "source": "Datu iturria",
+          "days": "Egunak atzera",
+          "scan_interval": "Eguneratze tartea (minutuak)"
+        }
+      }
+    }
+  },
+  "selector": {
+    "units": {
+      "options": {
+        "km": "Kilometroak",
+        "mi": "Milak"
+      }
+    },
+    "confidence": {
+      "options": {
+        "l": "Guztiak (baxua, nominala, altua)",
+        "n": "Nominala eta altua (gomendatua)",
+        "h": "Altua soilik"
+      }
+    },
+    "source": {
+      "options": {
+        "viirs": "VIIRS SNPP (Denbora erreala)",
+        "modis": "MODIS (Denbora erreala)",
+        "viirs_noaa": "VIIRS NOAA-20 (Denbora erreala)"
+      }
+    }
+  }
+}
