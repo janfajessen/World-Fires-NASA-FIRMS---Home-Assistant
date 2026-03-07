@@ -71,6 +71,7 @@ If you like this integration, consider supporting development!
 
 Issues? Open one on [GitHub](https://github.com/janfajessen/Fires-NASA-FIRMS-Unofficial/issues).
 
+This integration should only be used for your own educational purposes.
 ## License
 MIT License. See [LICENSE](LICENSE) for details.
 
