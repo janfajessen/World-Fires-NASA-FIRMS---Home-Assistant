@@ -44,12 +44,12 @@ This is an unofficial custom integration for Home Assistant that fetches active 
 4. Add the integration as above.
 
 ## Configuration
-<img src="https://raw.githubusercontent.com/janfajessen/Fires-NASA-FIRMS-Unofficial/refs/heads/main/config_flow.png" width="100"/>
+<img src="https://raw.githubusercontent.com/janfajessen/Fires-NASA-FIRMS-Unofficial/refs/heads/main/config_flow.png" width="200"/>
 Go to **Settings > Devices & Services > Add Integration > NASA FIRMS Fires**.
 
 - **API Key**: Your NASA FIRMS key.
 - **Latitude/Longitude**: Custom location (defaults to HA home).
-- **Radius (km)**: Search area (10-500 km).
+- **Radius (km)**: Search area 10-500 km (6,2-310,7 Ml).
 - **Units**: km or mi.
 - **Min Confidence**: Low, Nominal, High.
 - **Source**: VIIRS SNPP, MODIS, VIIRS NOAA-20.
