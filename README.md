@@ -5,8 +5,8 @@
 <img src="https://raw.githubusercontent.com/janfajessen/Fires-NASA-FIRMS-Unofficial/refs/heads/main/logo.png" width="150"/>(https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@20.1,31.3,4.5z)
 
 [![HACS Custom](https://img.shields.io/badge/HACS-Custom-41bdf5.svg?style=for-the-badge)](https://hacs.xyz/docs/publish/start)
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-yellow.svg?style=for-the-badge)](https://www.buymeacoffee.com/yourusername)  <!-- Reemplaza con tu link -->
-[![Patreon](https://img.shields.io/badge/Patreon-Support-red.svg?style=for-the-badge)](https://www.patreon.com/yourusername)  <!-- Reemplaza con tu link -->
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Donate-yellow.svg?style=for-the-badge)](https://www.buymeacoffee.com/janfajessen)  <!-- Reemplaza con tu link -->
+[![Patreon](https://img.shields.io/badge/Patreon-Support-red.svg?style=for-the-badge)](https://www.patreon.com/janfajessen)  <!-- Reemplaza con tu link -->
 
 This is an unofficial custom integration for Home Assistant that fetches active fire data from NASA's FIRMS (Fire Information for Resource Management System) API. It displays detected fires as geo_location entities on your HA map, with distance from home as state, and detailed attributes like confidence level, acquisition time, and more.
 
