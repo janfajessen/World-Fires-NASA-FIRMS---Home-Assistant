@@ -41,14 +41,15 @@ It displays detected fires as geo_location entities on your HA map, with distanc
 6. Add the integration: **Settings > Devices & Services > Add Integration > NASA FIRMS Fires**.~~
 
 ### Manual Installation
-1. Download the latest release ZIP from [Releases](https://github.com/janfajessen/Fires-NASA-FIRMS-Unofficial/releases).
+1. Download the files ZIP from CODE.
 2. Extract to `/config/custom_components/firms_nasa_fires/`.
-3. Restart Home Assistant.
-4. Add the integration as above.
+3. Or Copy url, open HACS, custom repository, integration, add and install.
+4. Restart Home Assistant.
+5. Add the integration as above.
 
 ## Configuration
 <img src="https://raw.githubusercontent.com/janfajessen/Fires-NASA-FIRMS-Unofficial/refs/heads/main/config_flow.png" width="200"/>
-Go to **Settings > Devices & Services > Add Integration > NASA FIRMS Fires**.
+Go to **Settings > Devices & Services > Add Integration > NASA FIRMS Fires (Unofficial)**.
 
 - **API Key**: Your NASA FIRMS key.
 - **Latitude/Longitude**: Custom location (defaults to HA home).
