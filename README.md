@@ -83,7 +83,6 @@ Using multiple sources together gives better temporal coverage (fires detected a
 <a>
 <img src="https://raw.githubusercontent.com/janfajessen/Fires-NASA-FIRMS-Unofficial/refs/heads/main/config_flow.png" width="300"/>
 </a>
-[![]()](https://raw.githubusercontent.com/janfajessen/Fires-NASA-FIRMS-Unofficial/refs/heads/main/config_flow.png)
 
 Go to **Settings > Devices & Services > Add Integration > NASA FIRMS Fires (Unofficial)**.
 
