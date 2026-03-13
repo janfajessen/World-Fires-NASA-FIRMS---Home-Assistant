@@ -5,7 +5,7 @@
 Fire Information for Resource Management System
 
 <a href="https://firms.modaps.eosdis.nasa.gov">
-  <img src="firms_nasa_fires/brand/logo.png" width="450"/>
+  <img src="brands/logo.png" width="450"/>
 </a>
 
 [![HACS Custom](https://img.shields.io/badge/HACS-Custom-41bdf5.svg?style=for-the-badge)](https://hacs.xyz/docs/publish/start)
@@ -79,7 +79,7 @@ Using multiple sources together gives better temporal coverage (fires detected a
 4. Add the integration: **Settings > Devices & Services > Add Integration > NASA FIRMS Fires (Unofficial)**.
 
 <a>
-  <img src="firms_nasa_fires/brand/icon.png" width="100"/>
+  <img src="brands/icon.png" width="100"/>
 </a>
 ---
 
@@ -162,7 +162,7 @@ automation:
 
 ---
 <a>
-  <img src="firms_nasa_fires/brand/icon.png" width="100"/>
+  <img src="brands/icon.png" width="100"/>
 </a>
 ## Support & Donations
 
@@ -199,8 +199,7 @@ Issues? Open one on [GitHub](https://github.com/janfajessen/Fires-NASA-FIRMS-Uno
 - **New:** Radius label shows km/mi equivalent for reference.
 - **New:** `source_required` validation error when no source is selected.
 
-### v1.3.2
-- Initial public release.
+
 
 ---
 
