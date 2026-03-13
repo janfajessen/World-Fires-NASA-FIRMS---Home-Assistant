@@ -11,7 +11,7 @@
 [![Patreon](https://img.shields.io/badge/Patreon-Support-red.svg?style=for-the-badge)](https://www.patreon.com/janfajessen)
 
 This is an unofficial custom integration for Home Assistant that fetches active fire data from NASA's FIRMS API (Fire Information for Resource Management System).  
-It displays detected fires as `geo_location` entities on your HA map, with distance from home as state, and detailed attributes like confidence level, acquisition time, and more.
+It displays detected fires as `geo_location` entities on your HA map, with distance coordinates as state, and detailed attributes like confidence level, acquisition time, and more.
 
 <a href="https://firms.modaps.eosdis.nasa.gov/map/#d:24hrs;@20.1,31.3,4.5z">
   <img src="https://raw.githubusercontent.com/janfajessen/Fires-NASA-FIRMS-Unofficial/refs/heads/main/Map_NASA_FIRMS.png" width="200"/>
@@ -23,7 +23,7 @@ It displays detected fires as `geo_location` entities on your HA map, with dista
 
 - Fetches real-time fire data from NASA FIRMS within a configurable radius.
 - Filters by confidence level (low, nominal, high).
-- Displays each fire as a `geo_location` entity with distance (km/mi) as state.
+- Displays each fire as a `geo_location` entity with distance (km/mi) as state from custom latitude and longitude.
 - **Customizable scan interval** (5–120 minutes) — fires update automatically on schedule.
 - **Multiple satellite sources** — choose one or more: VIIRS SNPP, MODIS, VIIRS NOAA-20, VIIRS NOAA-21.
 - **Automatic cross-satellite deduplication** — same fire detected by multiple satellites appears only once (best confidence/FRP kept).
