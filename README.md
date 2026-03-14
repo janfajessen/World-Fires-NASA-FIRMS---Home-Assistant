@@ -179,7 +179,7 @@ Issues? Open one on [GitHub](https://github.com/janfajessen/Fires-NASA-FIRMS-Uno
 
 ## Changelog
 
-### v1.3.0
+### v1.3.9
 - **Fix:** Automatic scan interval now works correctly (`config_entry` parameter added to `DataUpdateCoordinator`).
 - **Fix:** Entities now recreate correctly after reload/options change (session-local tracking instead of persistent entity registry).
 - **Fix:** Options menu (⚙️) no longer throws Error 500 (OptionsFlow updated for HA 2024.11+ API).
