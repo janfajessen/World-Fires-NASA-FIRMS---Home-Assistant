@@ -1,4 +1,4 @@
-# Fires NASA FIRMS Unofficial Integration
+# Fires NASA FIRMS Integration
 
 ## custom component <br> for Home Assistant
 
