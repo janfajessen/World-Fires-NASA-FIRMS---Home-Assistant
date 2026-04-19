@@ -231,7 +231,7 @@ If you like this integration, consider supporting development!
 [![GitHub Sponsors](https://img.shields.io/badge/GitHub%20Sponsors-Support-pink?style=for-the-badge&logo=githubsponsors)](https://github.com/sponsors/janfajessen)
 [![PayPal](https://img.shields.io/badge/PayPal-Donate-blue?style=for-the-badge&logo=paypal)](https://paypal.me/janfajessen)-->
 
-Issues? Open one on [GitHub](https://github.com/janfajessen/Fires-NASA-FIRMS-Unofficial/issues).
+Issues? Open one on [GitHub](https://github.com/janfajessen/World-Fires-NASA-FIRMS---Home-Assistant/issues).
 
 > This integration is for personal and educational use only. Data is provided by NASA FIRMS.
 
