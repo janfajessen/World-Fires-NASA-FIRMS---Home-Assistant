@@ -276,3 +276,5 @@ MIT License. See [LICENSE](LICENSE) for details.
 ---
 
 Thanks for using NASA FIRMS Fires! If you have feedback, star the repo ⭐ or contribute.
+
+© [@janfajessen](https://github.com/janfajessen)
