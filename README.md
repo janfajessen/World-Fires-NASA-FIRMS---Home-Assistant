@@ -135,6 +135,7 @@ Each instance runs its own independent update schedule — they do not interfere
 | Attribute | Description |
 |---|---|
 | `latitude` / `longitude` | Fire location |
+| `location` | Fire Written location |
 | `brightness` | Primary brightness (source-independent) |
 | `brightness_ti4` / `brightness_ti5` | VIIRS-specific brightness channels |
 | `brightness_t31` | MODIS-specific secondary brightness |
@@ -152,24 +153,66 @@ Each instance runs its own independent update schedule — they do not interfere
 ### Automation Examples
 
 ```yaml
-automation:
-  - alias: "Alert: High confidence fire within 50 km"
-    trigger:
-      - platform: state
-        entity_id: geo_location.high_conf_fire_nasa_firms_*
-    condition:
-      - condition: template
-        value_template: "{{ trigger.to_state.state | float < 50 }}"
-    action:
-      - service: notify.mobile_app
-        data:
-          title: "🔥 Fire detected!"
-          message: >
-            {{ trigger.to_state.name }} detected
-            {{ trigger.to_state.state }} km away.
+alias: Fire near Home NASA FIRMS Fires Telegram
+description: ""
+triggers:
+  - trigger: state
+    entity_id:
+      - sensor.nasa_firms_nearest_fire
+conditions:
+  - condition: template
+    value_template: >
+      {{ trigger.to_state.state | float > 0 and trigger.to_state.state !=
+      'unknown' and trigger.to_state.state != 'unavailable' }}
+  - condition: template
+    value_template: >
+      {{ trigger.from_state.state == 'unknown' or trigger.from_state.state ==
+      'unavailable' or trigger.from_state.state | float == 0 }}
+  - condition: template
+    value_template: |
+      {{ this.attributes.last_triggered is none or 
+         (as_timestamp(now()) - as_timestamp(this.attributes.last_triggered)) > 300 }}
+actions:
+  - action: telegram_bot.send_message
+    entity_id:
+      - notify.telegram_jan
+    data:
+      message: >
+        🔥 FIRE ⚠️⚠️ in 
+
+
+        {{  state_attr('sensor.nasa_firms_nearest_fire', 'location') }} 
+
+        {{ state_attr('sensor.nasa_firms_nearest_fire', 'latitude') }},{{
+        state_attr('sensor.nasa_firms_nearest_fire', 'longitude') }}
+
+            
+        in {{ state_attr('sensor.nasa_firms_nearest_fire', 'distance') }} km from home
+
+
+        confidence {{ state_attr('sensor.nasa_firms_nearest_fire', 'confidence')
+        }} {% set conf = state_attr('sensor.nasa_firms_nearest_fire',
+        'confidence') %} {% if conf == 'high' or conf == 'High' %}🔴🔥🔥🔥🌲🌲🏠
+        {% elif conf == 'nominal' or conf == 'Nominal' %}🟠🧯 {% elif conf ==
+        'low' or conf == 'Low' %}🟡💭 {% else %}⚪ {% endif %}
+
+        💥 FRP: {{ state_attr('sensor.nasa_firms_nearest_fire', 'frp') }}
+
+        Day/Night: {{ '☀️' if state_attr('sensor.nasa_firms_nearest_fire',
+        'daynight') == 'D' else '🌘' if
+        state_attr('sensor.nasa_firms_nearest_fire', 'daynight') == 'N' else '❓'
+        }}
+
+        🗓️ {{ state_attr('sensor.nasa_firms_nearest_fire', 'local_time') }}  {{
+        state_attr('sensor.nasa_firms_nearest_fire', 'local_date') }}
+
+        🛰️ Satellite: {{ state_attr('sensor.nasa_firms_nearest_fire', 'source')
+        }}
+mode: single
+
 ```
 
-### — Fire detected within your FIRMS radius
+### — Fire detected within your FIRMS radius zone
 
 ```yaml
 - alias: "FIRMS — Fire detected nearby"
@@ -183,17 +226,38 @@ automation:
       data:
         title: "🔥 Fire Detected Nearby"
         message: >
-          NASA FIRMS detected a fire near your location.
-          Distance: {{ trigger.to_state.state }} {{ trigger.to_state.attributes.unit_of_measurement }}
-          {% if state_attr(trigger.entity_id, 'frp') %}
-          Fire Radiative Power: {{ state_attr(trigger.entity_id, 'frp') }} MW
-          {% endif %}
-          {% if state_attr(trigger.entity_id, 'brightness') %}
-          Brightness: {{ state_attr(trigger.entity_id, 'brightness') }} K
-          {% endif %}
+        NASA FIRMS detected a fire near your location.
+          
+        {{  state_attr('sensor.nasa_firms_nearest_fire', 'location') }} 
+
+        {{ state_attr('sensor.nasa_firms_nearest_fire', 'latitude') }},{{
+        state_attr('sensor.nasa_firms_nearest_fire', 'longitude') }}
+
+            
+        in {{ state_attr('sensor.nasa_firms_nearest_fire', 'distance') }} km from home
+
+
+        confidence {{ state_attr('sensor.nasa_firms_nearest_fire', 'confidence')
+        }} {% set conf = state_attr('sensor.nasa_firms_nearest_fire',
+        'confidence') %} {% if conf == 'high' or conf == 'High' %}🔴🔥🔥🔥🌲🌲🏠
+        {% elif conf == 'nominal' or conf == 'Nominal' %}🟠🧯 {% elif conf ==
+        'low' or conf == 'Low' %}🟡💭 {% else %}⚪ {% endif %}
+
+        💥 FRP: {{ state_attr('sensor.nasa_firms_nearest_fire', 'frp') }}
+
+        Day/Night: {{ '☀️' if state_attr('sensor.nasa_firms_nearest_fire',
+        'daynight') == 'D' else '🌘' if
+        state_attr('sensor.nasa_firms_nearest_fire', 'daynight') == 'N' else '❓'
+        }}
+
+        🗓️ {{ state_attr('sensor.nasa_firms_nearest_fire', 'local_time') }}  {{
+        state_attr('sensor.nasa_firms_nearest_fire', 'local_date') }}
+
+        🛰️ Satellite: {{ state_attr('sensor.nasa_firms_nearest_fire', 'source')
+        }}
 ```
 
-### — High intensity fire (FRP > 100 MW)
+### — High intensity fire in your zome (FRP > 100 MW)
 
 ```yaml
 - alias: "FIRMS — High intensity fire nearby"
@@ -212,6 +276,7 @@ automation:
         message: >
           NASA FIRMS: HIGH INTENSITY fire detected!
           Distance: {{ trigger.to_state.state }} {{ trigger.to_state.attributes.unit_of_measurement }}
+          Date: {{ state_attr('sensor.nasa_firms_nearest_fire', 'local_time') }}  {{ state_attr('sensor.nasa_firms_nearest_fire', 'local_date') }}
           FRP: {{ state_attr(trigger.entity_id, 'frp') }} MW
           Satellite: {{ state_attr(trigger.entity_id, 'satellite') | default('unknown') }}
           ⚠️ Check local emergency services immediately.
