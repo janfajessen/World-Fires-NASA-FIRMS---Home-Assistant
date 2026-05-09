@@ -15,12 +15,20 @@ from .const import (
     CONF_SCAN_INTERVAL,
     CONF_LATITUDE,
     CONF_LONGITUDE,
+    CONF_DAYNIGHT,
+    CONF_DATE,
     DEFAULT_RADIUS_KM,
     DEFAULT_UNITS,
     DEFAULT_MIN_CONFIDENCE,
     DEFAULT_DAYS,
     DEFAULT_SOURCE,
     DEFAULT_SCAN_INTERVAL,
+    DEFAULT_DAYNIGHT,
+    DEFAULT_DATE,
+    CONF_MIN_FRP,
+    DEFAULT_MIN_FRP,
+    MIN_FRP_VALUE,
+    MAX_FRP_VALUE,
     MIN_DAYS,
     MAX_DAYS,
     MIN_RADIUS,
@@ -29,19 +37,23 @@ from .const import (
     MAX_SCAN_INTERVAL,
 )
 
-# Opciones de fuente para los selectores (label = clave de traducción)
+# ---------------------------------------------------------------------------
+# Helpers de selector reutilizables
+# ---------------------------------------------------------------------------
+
 _SOURCE_OPTIONS = [
     {"value": "VIIRS_SNPP_NRT",   "label": "viirs_snpp"},
     {"value": "MODIS_NRT",        "label": "modis"},
     {"value": "VIIRS_NOAA20_NRT", "label": "viirs_noaa20"},
     {"value": "VIIRS_NOAA21_NRT", "label": "viirs_noaa21"},
+    {"value": "LANDSAT_NRT",      "label": "landsat"},   # Nuevo v2.1.1
 ]
 
 def _source_selector():
     return selector.SelectSelector(
         selector.SelectSelectorConfig(
             options=_SOURCE_OPTIONS,
-            multiple=True,          # Multi-select: el usuario elige 1 o más fuentes
+            multiple=True,
             mode=selector.SelectSelectorMode.LIST,
             translation_key="source",
         )
@@ -72,6 +84,34 @@ def _confidence_selector():
         )
     )
 
+def _daynight_selector():
+    return selector.SelectSelector(
+        selector.SelectSelectorConfig(
+            options=[
+                {"value": "all", "label": "all"},
+                {"value": "D",   "label": "day"},
+                {"value": "N",   "label": "night"},
+            ],
+            mode=selector.SelectSelectorMode.DROPDOWN,
+            translation_key="daynight",
+        )
+    )
+
+
+def _frp_selector():
+    return selector.NumberSelector(
+        selector.NumberSelectorConfig(
+            min=MIN_FRP_VALUE,
+            max=MAX_FRP_VALUE,
+            unit_of_measurement="MW",
+            mode=selector.NumberSelectorMode.SLIDER,
+        )
+    )
+
+
+# ---------------------------------------------------------------------------
+# Config Flow
+# ---------------------------------------------------------------------------
 
 class FirmsConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     VERSION = 1
@@ -106,8 +146,8 @@ class FirmsConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 return self.async_create_entry(
                     title=title,
                     data={
-                        CONF_API_KEY:  user_input[CONF_API_KEY],
-                        CONF_LATITUDE: lat,
+                        CONF_API_KEY:   user_input[CONF_API_KEY],
+                        CONF_LATITUDE:  lat,
                         CONF_LONGITUDE: lon,
                     },
                     options={
@@ -117,6 +157,9 @@ class FirmsConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                         CONF_SOURCE:         user_input.get(CONF_SOURCE, DEFAULT_SOURCE),
                         CONF_DAYS:           user_input.get(CONF_DAYS, DEFAULT_DAYS),
                         CONF_SCAN_INTERVAL:  user_input.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL),
+                        CONF_DAYNIGHT:       user_input.get(CONF_DAYNIGHT, DEFAULT_DAYNIGHT),
+                        CONF_DATE:           user_input.get(CONF_DATE, DEFAULT_DATE),
+                        CONF_MIN_FRP:        user_input.get(CONF_MIN_FRP, DEFAULT_MIN_FRP),
                     },
                 )
 
@@ -131,14 +174,23 @@ class FirmsConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 selector.NumberSelectorConfig(min=-180, max=180, step=0.001, mode=selector.NumberSelectorMode.BOX)
             ),
             vol.Required(CONF_RADIUS_KM, default=DEFAULT_RADIUS_KM): selector.NumberSelector(
-                selector.NumberSelectorConfig(min=MIN_RADIUS, max=MAX_RADIUS, unit_of_measurement="km", mode=selector.NumberSelectorMode.SLIDER)
+                selector.NumberSelectorConfig(
+                    min=MIN_RADIUS, max=MAX_RADIUS,
+                    unit_of_measurement="km",
+                    mode=selector.NumberSelectorMode.SLIDER,
+                )
             ),
             vol.Optional(CONF_UNITS, default=DEFAULT_UNITS): _unit_selector(),
             vol.Optional(CONF_MIN_CONFIDENCE, default=DEFAULT_MIN_CONFIDENCE): _confidence_selector(),
             vol.Optional(CONF_SOURCE, default=DEFAULT_SOURCE): _source_selector(),
+            vol.Optional(CONF_DAYNIGHT, default=DEFAULT_DAYNIGHT): _daynight_selector(),
             vol.Optional(CONF_DAYS, default=DEFAULT_DAYS): selector.NumberSelector(
                 selector.NumberSelectorConfig(min=MIN_DAYS, max=MAX_DAYS, unit_of_measurement="days", mode=selector.NumberSelectorMode.SLIDER)
             ),
+            vol.Optional(CONF_DATE, default=DEFAULT_DATE): selector.TextSelector(
+                selector.TextSelectorConfig(type=selector.TextSelectorType.DATE)
+            ),
+            vol.Optional(CONF_MIN_FRP, default=DEFAULT_MIN_FRP): _frp_selector(),
             vol.Optional(CONF_SCAN_INTERVAL, default=DEFAULT_SCAN_INTERVAL): selector.NumberSelector(
                 selector.NumberSelectorConfig(min=MIN_SCAN_INTERVAL, max=MAX_SCAN_INTERVAL, unit_of_measurement="min", mode=selector.NumberSelectorMode.SLIDER)
             ),
@@ -150,6 +202,10 @@ class FirmsConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     def async_get_options_flow(config_entry):
         return FirmsOptionsFlow()
 
+
+# ---------------------------------------------------------------------------
+# Options Flow
+# ---------------------------------------------------------------------------
 
 class FirmsOptionsFlow(config_entries.OptionsFlow):
     """Sin __init__ personalizado: self.config_entry lo provee la base class (HA 2024.11+)."""
@@ -163,22 +219,54 @@ class FirmsOptionsFlow(config_entries.OptionsFlow):
             else:
                 return self.async_create_entry(data=user_input)
 
-        # Compatibilidad: si la opción guardada era string (instalación antigua), convertir a lista
+        # Compatibilidad: source puede venir como string en instalaciones antiguas
         current_source = self.config_entry.options.get(CONF_SOURCE, DEFAULT_SOURCE)
         if isinstance(current_source, str):
             current_source = [current_source]
 
         data_schema = vol.Schema({
-            vol.Required(CONF_RADIUS_KM, default=self.config_entry.options.get(CONF_RADIUS_KM, DEFAULT_RADIUS_KM)): selector.NumberSelector(
+            vol.Required(
+                CONF_RADIUS_KM,
+                default=self.config_entry.options.get(CONF_RADIUS_KM, DEFAULT_RADIUS_KM),
+            ): selector.NumberSelector(
                 selector.NumberSelectorConfig(min=MIN_RADIUS, max=MAX_RADIUS, unit_of_measurement="km", mode=selector.NumberSelectorMode.SLIDER)
             ),
-            vol.Required(CONF_UNITS, default=self.config_entry.options.get(CONF_UNITS, DEFAULT_UNITS)): _unit_selector(),
-            vol.Required(CONF_MIN_CONFIDENCE, default=self.config_entry.options.get(CONF_MIN_CONFIDENCE, DEFAULT_MIN_CONFIDENCE)): _confidence_selector(),
-            vol.Required(CONF_SOURCE, default=current_source): _source_selector(),
-            vol.Required(CONF_DAYS, default=self.config_entry.options.get(CONF_DAYS, DEFAULT_DAYS)): selector.NumberSelector(
+            vol.Required(
+                CONF_UNITS,
+                default=self.config_entry.options.get(CONF_UNITS, DEFAULT_UNITS),
+            ): _unit_selector(),
+            vol.Required(
+                CONF_MIN_CONFIDENCE,
+                default=self.config_entry.options.get(CONF_MIN_CONFIDENCE, DEFAULT_MIN_CONFIDENCE),
+            ): _confidence_selector(),
+            vol.Required(
+                CONF_SOURCE,
+                default=current_source,
+            ): _source_selector(),
+            vol.Required(
+                CONF_DAYNIGHT,
+                default=self.config_entry.options.get(CONF_DAYNIGHT, DEFAULT_DAYNIGHT),
+            ): _daynight_selector(),
+            vol.Required(
+                CONF_DAYS,
+                default=self.config_entry.options.get(CONF_DAYS, DEFAULT_DAYS),
+            ): selector.NumberSelector(
                 selector.NumberSelectorConfig(min=MIN_DAYS, max=MAX_DAYS, unit_of_measurement="days", mode=selector.NumberSelectorMode.SLIDER)
             ),
-            vol.Required(CONF_SCAN_INTERVAL, default=self.config_entry.options.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL)): selector.NumberSelector(
+            vol.Optional(
+                CONF_DATE,
+                default=self.config_entry.options.get(CONF_DATE, DEFAULT_DATE),
+            ): selector.TextSelector(
+                selector.TextSelectorConfig(type=selector.TextSelectorType.DATE)
+            ),
+            vol.Optional(
+                CONF_MIN_FRP,
+                default=self.config_entry.options.get(CONF_MIN_FRP, DEFAULT_MIN_FRP),
+            ): _frp_selector(),
+            vol.Required(
+                CONF_SCAN_INTERVAL,
+                default=self.config_entry.options.get(CONF_SCAN_INTERVAL, DEFAULT_SCAN_INTERVAL),
+            ): selector.NumberSelector(
                 selector.NumberSelectorConfig(min=MIN_SCAN_INTERVAL, max=MAX_SCAN_INTERVAL, unit_of_measurement="min", mode=selector.NumberSelectorMode.SLIDER)
             ),
         })

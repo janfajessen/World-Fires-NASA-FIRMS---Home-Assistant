@@ -8,13 +8,17 @@ from .const import DOMAIN, PLATFORMS
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Configurar una entrada de configuración."""
     hass.data.setdefault(DOMAIN, {})
-    # Bug #5 fix: guardamos un dict para poder almacenar el coordinator después
     hass.data[DOMAIN][entry.entry_id] = {}
 
-    # Bug #9 fix: el listener se registra UNA sola vez y async_on_unload lo
-    # cancela automáticamente al descargar la entry.
-    # Antes: async_reload_entry llamaba async_setup_entry, que registraba el
-    # listener otra vez → listeners duplicados en cada cambio de opciones.
+    # Crear el coordinator AQUÍ, antes de que las plataformas arranquen en paralelo.
+    # sensor.py y binary_sensor.py lo leen de hass.data — si geo_location.py lo
+    # creara en su propio async_setup_entry las tres plataformas compiten en orden
+    # no determinista y sensor/binary_sensor pueden llegar antes → KeyError.
+    from .geo_location import FirmsDataUpdateCoordinator
+    coordinator = FirmsDataUpdateCoordinator(hass, entry)
+    await coordinator.async_config_entry_first_refresh()
+    hass.data[DOMAIN][entry.entry_id]["coordinator"] = coordinator
+
     entry.async_on_unload(entry.add_update_listener(_async_update_listener))
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
