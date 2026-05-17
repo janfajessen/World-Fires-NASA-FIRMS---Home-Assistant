@@ -6,6 +6,7 @@
   "reconfigure": false,
   "dependencies": [],
   "documentation": "https://github.com/janfajessen/World-Fires-NASA-FIRMS---Home-Assistant",
+  "issue_tracker": "https://github.com/janfajessen/World-Fires-NASA-FIRMS---Home-Assistant/issues",
   "integration_type": "service",
   "iot_class": "cloud_polling",
   "requirements": ["aiohttp>=3.8.0", "haversine>=2.8.0"],
