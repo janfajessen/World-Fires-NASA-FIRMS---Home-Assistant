@@ -10,7 +10,7 @@ Fire Information for Resource Management System
   <img src="https://github.com/janfajessen/World-Fires-NASA-FIRMS---Home-Assistant/blob/e462aa237589eb63e1c5dacdd2cdb91fce908734/brand/logo%402x.png" width="450"/>
 </a>
 
-![Version](https://img.shields.io/badge/version-1.5.94-blue?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.5.95-blue?style=for-the-badge)
 ![HA](https://img.shields.io/badge/Home%20Assistant-2024.1+-orange?style=for-the-badge&logo=home-assistant)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python)
@@ -73,7 +73,7 @@ Using multiple sources together gives better temporal coverage (fires detected a
 
 1. Open HACS in Home Assistant: **HACS > Integrations**.
 2. Click the three dots (⋮) > **Custom repositories**.
-3. Add repository URL: `https://github.com/janfajessen/Fires-NASA-FIRMS-Unofficial`, Category = `Integration`.
+3. Add repository URL: `https://github.com/janfajessen/World-Fires-NASA-FIRMS---Home-Assistant`, Category = `Integration`.
 4. Search for **"NASA FIRMS Fires"** in HACS and install.
 5. Restart Home Assistant.
 6. Add the integration: **Settings > Devices & Services > Add Integration > NASA FIRMS Fires (Unofficial)**.
