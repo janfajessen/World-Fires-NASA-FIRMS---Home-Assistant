@@ -62,7 +62,7 @@ Using multiple sources together gives better temporal coverage (fires detected a
 ## Requirements
 
 - Home Assistant **2026.2** or later.
-- API key from [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/api/) (free, quick signup).
+- API key from [NASA FIRMS](https://firms.modaps.eosdis.nasa.gov/api/map_key) (free, quick signup).
 - Dependencies: `aiohttp>=3.8.0`, `haversine>=2.8.0` (installed automatically via HA).
 
 ---
@@ -98,7 +98,7 @@ Using multiple sources together gives better temporal coverage (fires detected a
 <img src="https://github.com/janfajessen/World-Fires-NASA-FIRMS---Home-Assistant/blob/52e6a59cb7bc18fc8be94a3aebe6fb2f1d20e0b5/screenshots/config_flow.png" width="30%"/>
 </a>
 
-Go to **Settings > Devices & Services > Add Integration > NASA FIRMS Fires (Unofficial)**.
+Go to **Settings > Devices & Services > Add Integration > World Fires NASA FIRMS**.
 
 | Parameter | Description |
 |---|---|
