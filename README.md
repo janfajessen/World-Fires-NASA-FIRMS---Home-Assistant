@@ -10,7 +10,7 @@ Fire Information for Resource Management System
   <img src="https://github.com/janfajessen/World-Fires-NASA-FIRMS---Home-Assistant/blob/e462aa237589eb63e1c5dacdd2cdb91fce908734/brand/logo%402x.png" width="450"/>
 </a>
 
-![Version](https://img.shields.io/badge/version-1.5.95-blue?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.5.96-blue?style=for-the-badge)
 ![HA](https://img.shields.io/badge/Home%20Assistant-2024.1+-orange?style=for-the-badge&logo=home-assistant)
 ![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 ![Python](https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python)
